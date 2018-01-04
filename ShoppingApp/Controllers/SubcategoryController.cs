@@ -52,7 +52,7 @@ namespace ShoppingApp.Controllers
             viewModel.ImageFileBase.SaveAs(fileName);
             _context.Subcategories.Add(viewModel.Subcategory);
             _context.SaveChanges();
-            var subCategory = _context.Subcategories.ToList();
+            var subCategory = _context.Subcategories.Include(c=>c.Category).ToList();
             return View("Index",subCategory);
         }
 
