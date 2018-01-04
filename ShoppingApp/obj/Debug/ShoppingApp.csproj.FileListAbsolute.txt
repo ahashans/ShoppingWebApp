@@ -39,3 +39,4 @@ C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\o
 C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\obj\Debug\ShoppingApp.csproj.GenerateResource.Cache
 C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\obj\Debug\ShoppingApp.Migrations.AddedImageModel.resources
 C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\obj\Debug\ShoppingApp.Migrations.AddedCategoryModel.resources
+C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\obj\Debug\ShoppingApp.Migrations.DeleteImageModel.resources
