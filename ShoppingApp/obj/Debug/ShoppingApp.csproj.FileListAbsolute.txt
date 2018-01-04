@@ -37,3 +37,4 @@ C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\o
 C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\obj\Debug\ShoppingApp.pdb
 C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\obj\Debug\ShoppingApp.Migrations.InitialCreate.resources
 C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\obj\Debug\ShoppingApp.csproj.GenerateResource.Cache
+C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\obj\Debug\ShoppingApp.Migrations.AddedImageModel.resources

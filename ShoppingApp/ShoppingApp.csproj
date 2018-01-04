@@ -199,9 +199,15 @@
     <Compile Include="Migrations\201801040900488_InitialCreate.Designer.cs">
       <DependentUpon>201801040900488_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801040928567_AddedImageModel.cs" />
+    <Compile Include="Migrations\201801040928567_AddedImageModel.Designer.cs">
+      <DependentUpon>201801040928567_AddedImageModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -387,6 +393,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201801040900488_InitialCreate.resx">
       <DependentUpon>201801040900488_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801040928567_AddedImageModel.resx">
+      <DependentUpon>201801040928567_AddedImageModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
