@@ -27,6 +27,7 @@ namespace ShoppingApp.Controllers
             var category = _context.Categories.ToList();
             return View(category);
         }
+        [HttpGet]
         public ActionResult Create()
         {
             var viewModel = new CategoryViewModel
@@ -35,6 +36,8 @@ namespace ShoppingApp.Controllers
             };
             return View("CategoryForm",viewModel);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(CategoryViewModel categoryViewModel)
         {
             if (!ModelState.IsValid)
@@ -54,5 +57,6 @@ namespace ShoppingApp.Controllers
             var category = _context.Categories.ToList();
             return View("Index",category);
         }
+
     }
 }
