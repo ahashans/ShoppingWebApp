@@ -211,6 +211,10 @@
     <Compile Include="Migrations\201801041035364_DeleteImageModel.Designer.cs">
       <DependentUpon>201801041035364_DeleteImageModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801041057531_AddedImagePathToCategory.cs" />
+    <Compile Include="Migrations\201801041057531_AddedImagePathToCategory.Designer.cs">
+      <DependentUpon>201801041057531_AddedImagePathToCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -410,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801041035364_DeleteImageModel.resx">
       <DependentUpon>201801041035364_DeleteImageModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801041057531_AddedImagePathToCategory.resx">
+      <DependentUpon>201801041057531_AddedImagePathToCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
