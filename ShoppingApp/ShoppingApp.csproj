@@ -203,9 +203,14 @@
     <Compile Include="Migrations\201801040928567_AddedImageModel.Designer.cs">
       <DependentUpon>201801040928567_AddedImageModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801040932596_AddedCategoryModel.cs" />
+    <Compile Include="Migrations\201801040932596_AddedCategoryModel.Designer.cs">
+      <DependentUpon>201801040932596_AddedCategoryModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -396,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801040928567_AddedImageModel.resx">
       <DependentUpon>201801040928567_AddedImageModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801040932596_AddedCategoryModel.resx">
+      <DependentUpon>201801040932596_AddedCategoryModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
