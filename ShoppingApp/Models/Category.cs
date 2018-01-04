@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ShoppingApp.Models
 {
@@ -8,6 +9,7 @@ namespace ShoppingApp.Models
 
         [Required(ErrorMessage = "Category Title is Required")]
         public string Name { get; set; }
-        public string ImagePath { get; set; }   
+        public string ImagePath { get; set; }
+        public ICollection<Subcategory> Subcategories { get; set; }
     }
 }
