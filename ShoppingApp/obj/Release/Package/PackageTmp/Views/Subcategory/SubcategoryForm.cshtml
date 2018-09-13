@@ -1,0 +1,34 @@
+﻿@model ShoppingApp.ViewModels.SubcategoryViewModel
+@{
+    ViewBag.Title = "SubcategoryForm";
+}
+
+<h2>Subcategory Form</h2>
+<div class="container">
+    @using (Html.BeginForm("Save", "Subcategory", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+    <div class="form-group">
+        @Html.LabelFor(m => m.Subcategory.Name, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Subcategory.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Subcategory.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Subcategory.CategoryId, new { @class = "control-label" })
+        @Html.DropDownListFor(m => m.Subcategory.CategoryId, new SelectList(Model.Categories, "CategoryId", "Name"), "Select a Category", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Subcategory.CategoryId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ImageFileBase, new { @class = "control-label" })
+        <input type="file" name="ImageFileBase" data-rule-required="true"/>
+        @Html.ValidationMessageFor(m => m.ImageFileBase)
+    </div>
+    <div class="form-group">
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-success">Store</button>
+        <button type="reset" class="btn btn-warning">Reset</button>
+    </div>
+    }
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

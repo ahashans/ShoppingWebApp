@@ -45,3 +45,4 @@ C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\o
 C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\obj\Debug\ShoppingApp.Migrations.UpdatedSubcategoryModel.resources
 C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\obj\Debug\ShoppingApp.Migrations.SetCategoryNameUnique.resources
 C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\obj\Debug\ShoppingApp.Migrations.SetSubcategoryNameUnique.resources
+C:\Users\Ahashan\Documents\Visual Studio 2017\Projects\ShoppingApp\ShoppingApp\obj\Debug\ShoppingApp.Migrations.CreatedProductModelWith1MRelationToSubcategory.resources

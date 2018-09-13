@@ -1,20 +1,143 @@
 ﻿@model IEnumerable<ShoppingApp.Models.Category>
+@section links{
+    @Styles.Render("~/bundles/dataTablesCss")
+}
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Main Category Home";
 }
 
-<h2>All Categories</h2>
-<table border="2">
-    <tr>
-        <th>Category Name</th>
-        <th>Category Title</th>
-    </tr>
-    @foreach (var category in Model)
-    {
-        <tr>
-            <td>@category.Name</td>
-            <td><img src="@Url.Content(category.ImagePath)" width="300" height="300"/></td>
-        </tr>
-    }
-</table>
+<div class="go-title">
+    <div class="pull-right">
+        <a href="@Url.Action("Create","Category")" class="btn btn-primary btn-add"><i class="fa fa-plus"></i> Add Main Category</a>
+    </div>
+    <h3>Main Category</h3>
+    <div class="go-line"></div>
+</div>
+<!-- Page Content -->
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-striped table-bordered" id="example">
+            <thead>
+                <tr>
+                    <th>Category Name</th>
+                    <th>Feature Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <td>@category.Name</td>
+                        <td>
+                            @{
+                                if (!String.IsNullOrEmpty(category.ImagePath))
+                                {
+                                    <img style="max-width: 150px;" src="@Url.Content(category.ImagePath)" id="featureImage" alt="No Featured Image Added">
+                                }
+                                else
+                                {
+                                    <p>No image added</p>
+                                }
+                            }
+                        </td>
+                        <td>
+                            <a href="~/Category/Edit/@category.CategoryId" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit </a>
+                            <a href="javascript:;" data-href="Delete/@category.CategoryId" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Remove</a><br>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+            </div>
+            <div class="modal-body">
+                <p>You are about to delete this Category, Everything will be deleted under this Category.</p>
+                <p>Do you want to proceed?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
 
+@section scripts
+{
+    @Scripts.Render("~/bundles/dataTablesJs")
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "order": []
+            });
+            $('#confirm-delete').on('show.bs.modal', function (e) {
+                $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+                //console.log($(e.relatedTarget).data('href'));
+            });
+        });
+
+    </script>
+    @*     <script type="text/javascript"> *@
+    @*         $(document).ready(function() { *@
+    @*             $('#catTable').DataTable( { *@
+    @*                 "processing": true, *@
+    @*                 "serverSide": false, *@
+    @*                 "ajax": { *@
+    @*                     "url": "/Category/GetAllCategories", *@
+    @*                     "type": "POST", *@
+    @*                     "datatype": "json" *@
+    @*                 }, *@
+    @*                 "columnDefs":   *@
+    @*                 [ *@
+    @*                     {   *@
+    @*                         "targets": [0],   *@
+    @*                         "visible": false,   *@
+    @*                         "searchable": false   *@
+    @*                     },   *@
+    @*                     {   *@
+    @*                         "targets": [2],   *@
+    @*                         "searchable": false,   *@
+    @*                         "orderable": false   *@
+    @*                     },   *@
+    @*                     {   *@
+    @*                         "targets": [3],   *@
+    @*                         "searchable": false,   *@
+    @*                         "orderable": false   *@
+    @*                     },   *@
+    @*                     {   *@
+    @*                         "targets": [4],   *@
+    @*                         "searchable": false,   *@
+    @*                         "orderable": false   *@
+    @*                     }], *@
+    @*                 "columns": [ *@
+    @*                     { "data": "CategoryId", "name": "CustomerID", "autoWidth": true },   *@
+    @*                     { "data": "Name", "name": "CompanyName", "autoWidth": true },   *@
+    @*                     { "render": function (data, type, full, meta)   *@
+    @*                     { return '<img class="img-responsive" src="' + ImagePath + '"/>'; }},                       *@
+    @*                     {   *@
+    @*                         "render": function (data, type, full, meta)   *@
+    @*                             { return '<a class="btn btn-info" href="/Demo/Edit/' + full.CustomerID + '">Edit</a>'; }   *@
+    @*                     },   *@
+    @*                     {   *@
+    @*                         data: null, render: function (data, type, row) {   *@
+    @*                             return "<a href='#' class='btn btn-danger' onclick=DeleteData('" + row.CustomerID + "'); >Delete</a>";   *@
+    @*                         }   *@
+    @*                     }   *@
+    @* *@
+    @* *@
+    @*                     ] *@
+    @* *@
+    @*             }); *@
+    @* *@
+    @*         }); *@
+    @* *@
+    @*     </script> *@
+}

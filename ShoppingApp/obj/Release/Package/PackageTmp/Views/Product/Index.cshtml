@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ShoppingApp.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Products</h2>
+
+<div class="container">
+    <table class="table table-bordered table-hover table-responsive table-striped">
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Size</th>
+            <th>Description</th>
+            <th>Stock Count</th>
+            <th>Image 1</th>
+            <th>Image 2</th>
+            <th>Subcategory</th>
+        </tr>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Size</td>
+                <td>@product.Description</td>
+                <td>@product.StockCount</td>
+                <td>
+                    <img src="@Url.Content(product.ImagePath1)" height="250" width="250"/>
+                </td>
+                <td>
+                    <img src="@Url.Content(product.ImagePath2)" height="250" width="250" />
+                </td>
+
+                <td>@product.Subcategory.Name</td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,121 @@
+﻿@model ShoppingApp.ViewModels.ProductViewModel
+@{
+    ViewBag.Title = "ProductForm";
+}
+<script type="text/javascript">
+    function getSubcategory(categoryId) {
+        var procemessage = "<option value='0'> Please wait...</option>";
+        $("#ddlSubcategory").html(procemessage).show();
+        var url = "/Product/GetSubcategory/";
+
+        $.ajax({
+            url: url,
+            data: { categoryid: categoryId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                if (data.length > 0) {
+                    var markup = "<option value=''>Select A Subcategory</option>";
+
+                    for (var x = 0; x < data.length; x++) {
+                        markup += "<option value=" + data[x].SubcategoryId + ">" + data[x].Name + "</option>";
+                        console.log(data[x].SubcategoryId);
+                    }
+                } else {
+                    var markup = "<option value=''>No Subcategory under the selected Category</option>";
+                }
+                $("#ddlSubcategory").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+<h2>Product Form</h2>
+@using (Html.BeginForm("Save", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Product.Name, new { @class = "control-label required" })
+            @Html.TextBoxFor(m => m.Product.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Product.Name)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Product.Price, new { @class = "control-label required" })
+            @Html.TextBoxFor(m => m.Product.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Product.Price)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Product.Size, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Product.Size, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Product.Size)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Product.StockCount, new { @class = "control-label required" })
+            @Html.TextBoxFor(m => m.Product.StockCount, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Product.StockCount)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Product.Description, new { @class = "control-label required" })
+            @Html.TextAreaFor(m => m.Product.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Product.Description)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Categories, new { @class = "control-label required" })
+            @Html.DropDownList("ddlCategory",new SelectList(Model.Categories, "CategoryId", "Name"),"Select a Category" ,new { @id = "ddlCategory", @class="form-control", @onchange = "javascript:getSubcategory(this.value);" })
+@*            <select name="CategoryId" class="form-control" data-rule-required="true" data-msg-required="Category is Required!" onchange = "javascript:getSubcategory(this.value);">*@
+@*                <option value="">Select a Category</option>*@
+@*                @foreach (var cat in Model.Categories)*@
+@*                {*@
+@*                    <option value="@cat.CategoryId">@cat.Name</option>*@
+@*                }*@
+@*            </select>*@
+            @Html.ValidationMessageFor(m => m.Categories)
+        </div>
+        @*
+        <div class="form-group">
+
+        @Html.LabelFor(m => m.Product.SubcategoryId, new { @class = "control-label required" })
+        @Html.DropDownListFor(m => m.Categories, new SelectList(Model.Categories, "CategoryId", "Name"), "Select a Category", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Product.SubcategoryId)
+    </div>
+*@
+        <div class="form-group">
+            @Html.LabelFor(m=>m.Product.SubcategoryId)
+@*            <select id="ddlSubcategory" name="SubcategoryId" class="form-control" data-rule-required="true" data-msg-required="Subcategory is Required!">*@
+@*                <option value="">Select a Category First</option>*@
+            @*            </select>*@
+            @Html.DropDownListFor(m => m.Product.SubcategoryId, Enumerable.Empty<SelectListItem>(), new { @id = "ddlSubcategory", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Product.SubcategoryId)
+
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ImageFileBase1, new { @class = "control-label required"})
+            <input type="file" name="ImageFileBase1" data-rule-required="true" data-r-msg/>
+            @Html.ValidationMessageFor(m => m.ImageFileBase1)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ImageFileBase2, new { @class = "control-label required" })
+            <input type="file" name="ImageFileBase2" data-rule-required="true" />
+            @Html.ValidationMessageFor(m => m.ImageFileBase2)
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="reset" class="btn btn-warning">Reset Form</button>
+        </div>
+    </div>
+}
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function() {
+            
+        });
+    </script>
+}

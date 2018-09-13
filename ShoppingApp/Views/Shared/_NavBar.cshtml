@@ -1,36 +1,239 @@
-﻿<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @Html.ActionLink("XYZ Shopping Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    @Html.ActionLink("Home", "Index", "Home")
-                    @*<a href="/Home/Index">Home</a>*@
-                </li>
-                <li class="dropdown">
-                    @*@Html.ActionLink("About", "About", "Home")*@
-                    <a href="/Product/Index" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("All Category", "Index", "Category")</li>
-                        <li>@Html.ActionLink("New Category", "Create", "Category")</li>
-                        <li>@Html.ActionLink("All Subcategory", "Index", "Subcategory")</li>
-                        <li>@Html.ActionLink("New Subcategory", "Create", "Subcategory")</li>
+﻿<header>
+    <div class="header-area index1  header-6">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                        <a href="@Url.Action("Index","Home")"><img runat="server" src="~/img/logo/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-4 col-xs-12">
+                    <div class="main-menu visible-md visible-lg ">
+                        <nav>
+                            <ul class="main">
+                                <li class="@{ if ((string)ViewContext.RouteData.Values["action"] == "Index" && (string)ViewContext.RouteData.Values["controller"] == "Home")
+                                              {
+                                                  @Html.Raw("active")
+                                              }}">
+                                    <a class="main-a" href="@Url.Action("Index","Home")"><span>Home</span></a>                                    
+                                </li>
+                                <li class=""><a class="main-a" href="shop.html">Shop</a></li>
+                                <li class="static">
+                                    <a class="main-a" href="#"><span>Elements</span></a>
+                                    <div class="mega-menu">
+                                        <div class="mega-menu-def">
+                                            <div class="col-md-2 col-sm-2">
+                                                <span class="Column-one">
+                                                    <a class="title-dropsown" href="#">Product Page</a>
+                                                    <a href="#">Standard Product</a>
+                                                    <a href="#">Variable Product</a>
+                                                    <a href="#">External Product</a>
+                                                    <a href="#">Group Product</a>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-2 col-sm-2">
+                                                <span class="Column-one">
+                                                    <a class="title-dropsown" href="#">Product Elements</a>
+                                                    <a href="#">Products Layout</a>
+                                                    <a href="#">Product Columns</a>
+                                                    <a href="#">Products Full Width</a>
+                                                    <a href="#">Products Right Sidebar</a>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-2 col-sm-2">
+                                                <span class="Column-one">
+                                                    <a class="title-dropsown" href="#">Product Elements</a>
+                                                    <a href="#">Products On Sale <span class="on-sale">sale</span></a>
+                                                    <a href="#">Products Featured</a>
+                                                    <a href="#">Products Deal<span class="on-sale2">Deals</span></a>
+                                                    <a href="#">Products Recent<span class="on-sale3">New</span></a>
 
-                    </ul>
-                </li>
-                <li>
-                    @*@Html.ActionLink("Contact", "Contact", "Home")*@
-                    <a href="/Home/Contacts">Contacts</a>
-                </li>
-            </ul>
-            @Html.Partial("_LoginPartial")
+                                                </span>
+                                            </div>
+                                            <div class="col-md-2 col-sm-2">
+                                                <span class="Column-one right">
+                                                    <a class="title-dropsown" href="#">Theme Elements</a>
+                                                    <a href="#">Accordion &amp; Tabs</a>
+                                                    <a href="#">Skills</a>
+                                                    <a href="#">Team &amp; Testimonials</a>
+                                                    <a href="#">Columns</a>
+                                                    <a href="#">Page 404</a>
+                                                    <a href="#">Underconstruction Page</a>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-4 col-sm-2">
+                                                <div class="img-widget">
+                                                    <a href="#"><img runat="server" src="~/img/largmenu/fashion-bags.jpg" alt=""></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="customblock">
+                                                            <img runat="server" src="~/img/customblock/customblock1.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="customblock">
+                                                            <img runat="server" src="~/img/customblock/customblock2.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="main-a" href=""><span>Blogs</span></a>
+                                    @* <ul> *@
+                                    @*     <li><a href="blog-grid.html">Blog Grid</a></li>                                         *@
+                                    @* </ul> *@
+                                </li>
+                                @* <li> *@
+                                @*     <a class="main-a" href="portfolio.html"><span>Portfolio</span></a> *@
+                                @*     <ul> *@
+                                @*         <li><a href="portfolio.html">Single Item </a></li> *@
+                                @*         <li><a href="portfolio-2.html">Two Columns</a></li> *@
+                                @*         <li><a href="portfolio-3.html">Three Columns</a></li> *@
+                                @*         <li><a href="portfolio-4.html">Four Columns</a></li> *@
+                                @*     </ul> *@
+                                @* </li> *@
+                                <li class="@{ if ((string)ViewContext.RouteData.Values["action"] == "Contact" && (string)ViewContext.RouteData.Values["controller"] == "Home")
+                                              {
+                                                  @Html.Raw("active")
+                                              }}"><a class="main-a" href="@Url.Action("Contact","Home")">Contact</a></li>
+                                <li class="@{ if ((string)ViewContext.RouteData.Values["action"] == "About" && (string)ViewContext.RouteData.Values["controller"] == "Home")
+                                              {
+                                                  @Html.Raw("active")
+                                              }}"><a class="main-a" href="@Url.Action("About","Home")">About Us</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-5 col-xs-12">
+                    <div class="header-wocom">
+                        <div class="header-userinfo">
+                            <a class="icon-heaher" href="#"><i class="fa fa-shopping-cart"></i><span>2</span></a>
+                            <ul class="shop-cart">
+                                <li>
+                                    <div class="sop-pro">
+                                        <div class="img-cart">
+                                            <a href="#"><img runat="server" src="~/img/cart/1.jpg" alt=""></a>
+                                        </div>
+                                        <div class="img-dtil">
+                                            <h4><a href="#">Commodo New</a></h4>
+                                            <span class="quantity">
+                                                1 ×
+                                                <span class="amount">$169.00</span>
+                                            </span>
+                                        </div>
+                                        <div class="close-x">
+                                            <a href="#">X</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sop-pro">
+                                        <div class="img-cart">
+                                            <a href="#"><img runat="server" src="~/img/cart/1.jpg" alt=""></a>
+                                        </div>
+                                        <div class="img-dtil">
+                                            <h4><a href="#">Commodo New</a></h4>
+                                            <span class="quantity">
+                                                1 ×
+                                                <span class="amount">$169.00</span>
+                                            </span>
+                                        </div>
+                                        <div class="close-x">
+                                            <a href="#">X</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li><p class="total">Total: <span class="amount">$523.00</span></p></li>
+                                <li>
+                                    <div class="view"><a href="checkout.html">Checkout</a></div>
+                                    <div class="chack-out"><a href="cart.html">View Cart</a></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="header-language">
+                            <a class="icon-heaher" href="#"><i class="fa fa-cog"></i></a>
+                            <ul>
+                                <li><h3>Languages</h3></li>
+                                <li><a href="#"><img runat="server" src="~/img/language/english.png" alt="">english </a></li>
+                                <li><a href="#"><img runat="server" src="~/img/language/english.png" alt="">english </a></li>
+                                <li>
+                                    <h3>Currencies</h3>
+                                    <span class="currencies">
+                                        <a href="#"><span>$</span> - USD</a>
+                                        <a href="#"><span>$</span> - USD</a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="header-cart">
+                            <a class="icon-heaher" href="#"><i class="fa fa-user"></i></a>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-heart"></i>My Wishlist</a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i>My Cart</a></li>
+                                <li><a href="#"><i class="fa fa-hand-o-right"></i>Check Out</a></li>
+                                @Html.Partial("_LoginPartial")
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- mobile menu  -->
+<div class="header-mobile-menu visible-xs visible-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="menu-spacing">
+                    <div class="mobile-menu-area visible-xs visible-sm">
+                        <div class="mobile-menu">
+                            <nav id="mobile-menu-active">
+                                <ul class="main">
+                                    <li class="@{ if ((string)ViewContext.RouteData.Values["action"] == "Index" && (string)ViewContext.RouteData.Values["controller"] == "Home")
+                                                  {
+                                                      @Html.Raw("active")
+                                                  }}">
+                                        <a class="main-a" href="~/"><span>Home</span></a>                                        
+                                    </li>
+                                    <li class=""><a class="main-a" href="shop.html">Shop</a></li>
+                                    <li class="static">
+                                        <a class="main-a" href="#"><span>Elements</span></a>
+                                        <ul>
+                                            <li><a class="title-dropsown" href="#">Product Page</a></li>
+                                            <li><a href="#">Standard Product</a></li>
+                                            <li><a href="#">Variable Product</a></li>
+                                            <li><a href="#">External Product</a></li>
+                                            <li><a href="#">Group Product</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="main-a" href=""><span>Blogs</span></a>                                        
+                                    </li>
+                                    @* <li> *@
+                                    @*     <a class="main-a" href="portfolio.html"><span>Portfolio</span></a> *@
+                                    @*     <ul> *@
+                                    @*         <li><a href="portfolio.html">Single Item </a></li> *@
+                                    @*         <li><a href="portfolio-2.html">Two Columns</a></li> *@
+                                    @*         <li><a href="portfolio-3.html">Three Columns</a></li> *@
+                                    @*         <li><a href="portfolio-4.html">Four Columns</a></li> *@
+                                    @*     </ul> *@
+                                    @* </li> *@
+                                    <li><a class="main-a" href="@Url.Action("Contact","Home")">Contact</a></li>
+                                    <li><a class="main-a" href="@Url.Action("About","Home")">About Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

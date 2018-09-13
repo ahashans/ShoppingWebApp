@@ -1,0 +1,20 @@
+﻿@model IEnumerable<ShoppingApp.Models.Category>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Categories</h2>
+<table border="2">
+    <tr>
+        <th>Category Name</th>
+        <th>Category Title</th>
+    </tr>
+    @foreach (var category in Model)
+    {
+        <tr>
+            <td>@category.Name</td>
+            <td><img src="@Url.Content(category.ImagePath)" width="300" height="300"/></td>
+        </tr>
+    }
+</table>
+

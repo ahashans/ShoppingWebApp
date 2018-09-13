@@ -1,25 +1,40 @@
 ﻿<!DOCTYPE html>
-<html>
+<html class="no-js" lang="zxx">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - ShopHere</title>
-    @Styles.Render("~/Content/css")
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewBag.Title - Shop Here</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- all font Here -->
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700italic,700,300,600,600italic,800,800italic,300italic' rel='stylesheet' type='text/css'>
+    <!-- all css here -->
+    <!-- bootstrap css -->
+    @Styles.Render("~/Content/frontendcss")    
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    @Html.Partial("_NavBar")
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - @@hashansWebFactory</p>
-        </footer>
-    </div>
+<!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+<!-- Add your site or application content here -->
+<!-- header area -->
+    @Html.Partial("_NavBar")
+<!-- Mobile menu end  -->
+<!-- header area end-->
+
+
+    @RenderBody()    
+
+    @Html.Partial("_Footer")
+
+
+@Scripts.Render("~/bundles/frontendjs")
+@RenderSection("scripts", required: false)
 </body>
 </html>

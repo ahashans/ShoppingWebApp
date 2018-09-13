@@ -1,30 +1,145 @@
 ﻿@model ShoppingApp.ViewModels.CategoryViewModel
 @{
-    ViewBag.Title = "CategoryForm";
+    ViewBag.Title = "Main Category Form";
 }
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row" id="main">
+            <!-- Page Heading -->
+            <div class="go-title">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index","Category")" class="btn btn-default btn-back">
+                        <i class="fa fa-arrow-left"></i> Back
+                    </a>
+                </div>
+                <h3>Add Main Category</h3>
+                <div class="go-line"></div>
+            </div>
+            <!-- Page Content -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @{if (ViewBag.SuccessMessage != null)
+                        {
+                            <div class="alert alert-success alert-dismissable">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                @ViewBag.SuccessMessage
+                            </div>
+                        }
+                        else if (ViewBag.ErrorMessage != null)
+                        {
+                            <div class="alert alert-danger alert-dismissable">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                @ViewBag.SuccessMessage
+                            </div>
+                        }
+                    }
+                    @{
+                        if (ViewBag.operation == "Edit")
+                        {
+                            using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal form-label-left" }))
+                            {
+                            <div class="item form-group">
+                                @Html.LabelFor(m => m.Category.Name, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <div class="col-md-7 col-xs-12">
+                                    @Html.TextBoxFor(m => m.Category.Name, new { @class = "form-control col-md-7 col-xs-12", value = @Model.Category.Name })
 
-<h2>Category Form</h2>
-<div class="container">
-    @using (Html.BeginForm("Save", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <div class="form-group">
-            @Html.LabelFor(m=>m.Category.Name, new{@class="control-label"})
-            @Html.TextBoxFor(m=>m.Category.Name, new{@class="form-control"})
-            @Html.ValidationMessageFor(m=>m.Category.Name)
+                                </div>
+                                @Html.ValidationMessageFor(m => m.Category.Name, "",new{@class="help-block"})
+                            </div>                                
+                                <div class="item form-group">
+                                    @Html.LabelFor(m => m.ImageFileBase, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <input onchange="readURL(this)" type="file" name="ImageFileBase" id="uploadFile" accept="image/*" data-rule-required="true" />
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <img style="max-width: 250px;" src="@Url.Content(Model.Category.ImagePath)" id="featureImage"
+                                             alt="No Featured Image Added">
+                                    </div>
+                                    
+                                </div>
+                                <div class="item form-group has-error">
+                                    @Html.ValidationMessageFor(m => m.ImageFileBase)
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    @Html.AntiForgeryToken()
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <button type="submit" class="btn btn-success  btn-block">Store</button>
+                                        <button type="reset" class="btn btn-warning  btn-block">Reset</button>
+                                    </div>
+
+                                </div>
+                            }
+                            /**/
+                        }
+                        else
+                        {
+                            using (Html.BeginForm("Save", "Category", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role="form" }))
+                            {
+                                <div class="row">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.Category.Name, new { @class = "control-label" })
+                                        <div class="">
+                                            @Html.TextBoxFor(m => m.Category.Name, new { @class = "form-control" })
+                                        </div>
+                                        <div class="help-block">
+                                            @Html.ValidationMessageFor(m => m.Category.Name, "", new { @class = "help-block" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.ImageFileBase, new { @class = "control-label" })
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input onchange="readURL(this)" type="file" name="ImageFileBase" id="uploadFile" accept="image/*"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <img style="max-width: 250px;" src="" id="featureImage"
+                                                     alt="No Featured Image Added">
+                                            </div>
+                                        </div>
+                                        @Html.ValidationMessageFor(m => m.ImageFileBase)
+                                    </div>
+                                    <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            @Html.AntiForgeryToken()
+                                            <div class="">
+                                                <button type="submit" class="btn btn-success  btn-block">Store</button>
+                                                <button type="reset" class="btn btn-warning  btn-block">Reset</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3"></div>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m=>m.ImageFileBase, new { @class = "control-label" })
-            <input type="file" name="ImageFileBase" data-rule-required="true"/>
-            @Html.ValidationMessageFor(m => m.ImageFileBase)
-        </div>
-        <div class="form-group">
-            @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-success">Store</button>
-            <button type="reset" class="btn btn-warning">Reset</button>
-        </div>
-    }
+    </div>
 </div>
+
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#featureImage').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function imgClear() {
+            $('#featureImage').attr('src', '');
+        }
+    </script>
 }
